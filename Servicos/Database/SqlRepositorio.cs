@@ -13,8 +13,9 @@ namespace Desafio21diasAPI.Servicos.Database
 
     public string DadosDoArmazenamento()
     {
-      JToken jAppSettings = JToken.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "appsettings.json")));
-      return jAppSettings["ConnectionStrings"]["sqlCnn"].ToString();
+      //JToken jAppSettings = JToken.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "appsettings.json")));
+      //return jAppSettings["ConnectionStrings"]["sqlCnn"].ToString();
+      return System.Environment.GetEnvironmentVariable("DB_CONFIG", EnvironmentVariableTarget.Process);
     }
 
     public static string PreparaCampoQuery(string valor)
