@@ -36,9 +36,6 @@ namespace Desafio21diasAPI
         {
             services.AddCors();
             services.AddControllers();
-            
-            var item = System.Environment.GetEnvironmentVariable("DB_CONFIG", EnvironmentVariableTarget.Process);
-            Console.WriteLine($"=======[{item}]==========");
 
             JToken jAppSettings = JToken.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory,"appsettings.json")));
             var key = Encoding.ASCII.GetBytes(jAppSettings["JwtToken"].ToString());
