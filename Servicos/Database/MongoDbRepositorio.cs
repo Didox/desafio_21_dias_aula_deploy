@@ -14,8 +14,10 @@ namespace Desafio21diasAPI.Servicos.Database
   {
     public string DadosDoArmazenamento()
     {
-      JToken jAppSettings = JToken.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "appsettings.json")));
-      return jAppSettings["mongoCnn"].ToString();
+      //JToken jAppSettings = JToken.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "appsettings.json")));
+      //return jAppSettings["mongoCnn"].ToString();
+      
+      return System.Environment.GetEnvironmentVariable("DB_CONFIG", EnvironmentVariableTarget.Process);
     }
 
     public void Excluir<T>(ObjectId id)
