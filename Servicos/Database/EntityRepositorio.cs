@@ -15,8 +15,11 @@ namespace Desafio21diasAPI.Servicos.Database
     public DbSet<Cliente> Clientes { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      JToken jAppSettings = JToken.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "appsettings.json")));
-      optionsBuilder.UseSqlServer(jAppSettings["sqlCnn"].ToString());
+      //JToken jAppSettings = JToken.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "appsettings.json")));
+      //optionsBuilder.UseSqlServer(jAppSettings["sqlCnn"].ToString());
+      
+      var config = System.Environment.GetEnvironmentVariable("DB_CONFIG", EnvironmentVariableTarget.Process);
+      optionsBuilder.UseSqlServer(config);
     }
   }
 }
