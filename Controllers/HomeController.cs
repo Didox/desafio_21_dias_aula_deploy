@@ -23,10 +23,7 @@ namespace Desafio21diasAPI.Controllers
         [Route("/")]
         [AllowAnonymous]
         public Home Get()
-        {
-            var item = System.Environment.GetEnvironmentVariable("DB_CONFIG", EnvironmentVariableTarget.Process);
-            Console.WriteLine($"=======[{item}]==========");
-            
+        {   
             return new Home();
         }
     }
